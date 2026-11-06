@@ -1,46 +1,40 @@
-﻿//empty space 
+﻿#include <iostream>
+#include <string>
 
-#include <iostream>
-
-class Rectangle {
-private:
-    double width;
-    double height;
-
+class Musician {
 public:
-    // Default Constructor
-    Rectangle() : width(1.0), height(1.0) {}
-
-    // Parameterized Constructor
-    Rectangle(double w, double h) {
-        setWidth(w);
-        setHeight(h);
+    // TODO: Update the constructor to include the yearsActive data member
+    Musician(const std::string& name, const std::string& instrument, int yearsActive)
+        : name(name), instrument(instrument), yearsActive(yearsActive) {
     }
 
-    // Destructor
-    ~Rectangle() {}
-
-    // Setters
-    void setWidth(double w) {
-        width = (w > 0) ? w : 1.0;
+    // TODO: Update the copy constructor to include the yearsActive data member in the copy
+    Musician(const Musician& other)
+        : name(other.name), instrument(other.instrument), yearsActive(other.yearsActive) {
     }
 
-    void setHeight(double h) {
-        height = (h > 0) ? h : 1.0;
+    // TODO: Update the display method to include the yearsActive data member in the output
+    void display() const {
+        std::cout << "Name: " << name << ", Instrument: " << instrument << "Yearactive: " << name << yearsActive << std::endl;
     }
 
-    // Getters
-    double getWidth() const { return width; }
-    double getHeight() const { return height; }
 
-    // Member Function
-    double calculateArea() const {
-        return width * height;
-    }
+private:
+    std::string name;
+    std::string instrument;
+    int yearsActive;
+    // TODO: Add a new data member 'yearsActive' to capture the number of years the musician has been active
 };
 
 int main() {
-    Rectangle rect(5.0, 4.0);
-    std::cout << "Area: " << rect.calculateArea() << "\n";
+    // TODO: Update the instance of Musician to include the yearsActive data member with a value of 10
+    Musician musician("John", "Guitar", 10);
+    musician.display();
+
+    // Using the copy constructor
+    Musician musicianCopy(musician);
+    musicianCopy.display();
+
+
     return 0;
 }
