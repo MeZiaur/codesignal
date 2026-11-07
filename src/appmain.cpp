@@ -1,40 +1,69 @@
-﻿#include <iostream>
+﻿
+
+#if 0
+
+Great job so far!Let's enhance the Album class by adding a constructor that takes the title, genre, and release year as arguments. Also, implement the main to do operations with the class.
+
+Notice that the setTitle method updates only the title of one album; the other one remains unchanged because it is a copy of the original album.
+
+
+
+
+#endif
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
 #include <string>
 
-class Musician {
+class Album {
 public:
-    // TODO: Update the constructor to include the yearsActive data member
-    Musician(const std::string& name, const std::string& instrument, int yearsActive)
-        : name(name), instrument(instrument), yearsActive(yearsActive) {
+    // TODO: Add the constructor here that takes the title, genre, and release year
+    Album(std::string var_title, std::string var_genre, int var_releaseYear) :title(var_title), genre(var_genre), releaseYear(var_releaseYear)
+    {
+    }
+    // Copy constructor
+    Album(const Album& other)
+        : title(other.title), genre(other.genre), releaseYear(other.releaseYear) {
     }
 
-    // TODO: Update the copy constructor to include the yearsActive data member in the copy
-    Musician(const Musician& other)
-        : name(other.name), instrument(other.instrument), yearsActive(other.yearsActive) {
-    }
-
-    // TODO: Update the display method to include the yearsActive data member in the output
     void display() const {
-        std::cout << "Name: " << name << ", Instrument: " << instrument << "Yearactive: " << name << yearsActive << std::endl;
+        std::cout << "Title: " << title << ", Genre: " << genre << ", Release Year: " << releaseYear << std::endl;
     }
 
+    void setTitle(const std::string& title) {
+        this->title = title;
+    }
 
 private:
-    std::string name;
-    std::string instrument;
-    int yearsActive;
-    // TODO: Add a new data member 'yearsActive' to capture the number of years the musician has been active
+    std::string title;
+    std::string genre;
+    int releaseYear;
 };
 
 int main() {
-    // TODO: Update the instance of Musician to include the yearsActive data member with a value of 10
-    Musician musician("John", "Guitar", 10);
-    musician.display();
+    // TODO: Create an Album object with the title "Abbey Road", genre "Rock", and release year 1969
+    Album my_album("Abbey Road", "Rock", 1969);
+    // TODO: Using the copy constructor to create albumCopy
+    Album albumCopy(my_album);
 
-    // Using the copy constructor
-    Musician musicianCopy(musician);
-    musicianCopy.display();
+    // TODO: Call the setTitle method on albumCopy with the value "Green River"
+    albumCopy.setTitle("Green River");
 
+
+    // TODO: Display the album details
+    my_album.display();
+
+    // TODO: Display the albumCopy details
+    albumCopy.display();
 
     return 0;
 }
