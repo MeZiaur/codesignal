@@ -1,10 +1,8 @@
 ﻿
-
 #if 0
 
-Great job so far!Let's enhance the Album class by adding a constructor that takes the title, genre, and release year as arguments. Also, implement the main to do operations with the class.
+Your task is to implement a Person class from scratch with the requirements listed in the TODO comments in the starter code.
 
-Notice that the setTitle method updates only the title of one album; the other one remains unchanged because it is a copy of the original album.
 
 
 
@@ -12,58 +10,45 @@ Notice that the setTitle method updates only the title of one album; the other o
 #endif
 
 
-
-
-
-
-
-
-
-
-
 #include <iostream>
 #include <string>
 
-class Album {
+// TODO: Define the Person class
+class Person {
+
 public:
-    // TODO: Add the constructor here that takes the title, genre, and release year
-    Album(std::string var_title, std::string var_genre, int var_releaseYear) :title(var_title), genre(var_genre), releaseYear(var_releaseYear)
-    {
-    }
-    // Copy constructor
-    Album(const Album& other)
-        : title(other.title), genre(other.genre), releaseYear(other.releaseYear) {
+    //  - Implement a constructor that initializes both data members
+    Person(std::string a, int b) :name(a), age(b) {}
+
+    //  - Implement a copy constructor with a 'Person' parameter
+    Person(const Person& obj) {
+        name = obj.name;
+        age = obj.age;
     }
 
-    void display() const {
-        std::cout << "Title: " << title << ", Genre: " << genre << ", Release Year: " << releaseYear << std::endl;
-    }
-
-    void setTitle(const std::string& title) {
-        this->title = title;
-    }
-
+    //  - Create private data members 'name' and 'age'
 private:
-    std::string title;
-    std::string genre;
-    int releaseYear;
+    std::string name;
+    int age;
+
+    //  - Implement a 'display' method that prints 'name' and 'age'
+public:
+    void display()
+    {
+        std::cout << "Name = " << this->name << "Age = " << this->age;
+    }
+
 };
 
 int main() {
-    // TODO: Create an Album object with the title "Abbey Road", genre "Rock", and release year 1969
-    Album my_album("Abbey Road", "Rock", 1969);
-    // TODO: Using the copy constructor to create albumCopy
-    Album albumCopy(my_album);
+    // TODO: Create a Person object with name "Alice" and age 30
+    Person my_person("Alice", 30);
 
-    // TODO: Call the setTitle method on albumCopy with the value "Green River"
-    albumCopy.setTitle("Green River");
-
-
-    // TODO: Display the album details
-    my_album.display();
-
-    // TODO: Display the albumCopy details
-    albumCopy.display();
-
+    // TODO: Call the 'display' method on this object to print the details
+    my_person.display();
+    // TODO: Create a copy of the first object using the copy constructor
+    Person copyPerson(my_person);
+    // TODO: Call the 'display' method on the copied object to print the details
+    copyPerson.display();
     return 0;
 }
